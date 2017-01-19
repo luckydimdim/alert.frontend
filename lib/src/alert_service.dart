@@ -1,10 +1,9 @@
-import "package:angular2/core.dart";
-import 'package:angular2/router.dart';
-
 import 'dart:async';
 
-class AlertModel {
+import 'package:angular2/core.dart';
+import 'package:angular2/router.dart';
 
+class AlertModel {
   String text = '';
   String type = 'danger';
 
