@@ -23,6 +23,7 @@ class MockInjectableService implements InjectableService {
   }
 }
 
+/**/
 main() {
   allowRuntimeReflection();
 
