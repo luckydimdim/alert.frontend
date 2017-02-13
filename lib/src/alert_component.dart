@@ -1,10 +1,12 @@
 import 'package:angular2/core.dart';
+import 'package:master_layout/master_layout_component.dart';
 import 'alert_service.dart';
 
 @Component(
     selector: 'alert',
     templateUrl: 'alert_component.html',
-    styleUrls: const <String>['alert_component.css'])
+    styleUrls: const <String>['alert_component.css'],
+    directives: const[MasterLayoutComponent])
 class AlertComponent implements OnInit {
   final AlertService _alertService;
   String message = '';
@@ -22,13 +24,12 @@ class AlertComponent implements OnInit {
     this.type = alertModel.type;
   }
 
-  void close(){
+  void close() {
     this.message = '';
     this.type = 'danger';
   }
 
   Map<String, bool> setClasses() {
-
     final classes = {
       'alert': true,
       'alert-dismissible': true,
@@ -37,5 +38,4 @@ class AlertComponent implements OnInit {
 
     return classes;
   }
-
 }
