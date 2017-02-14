@@ -1,12 +1,10 @@
 import 'package:angular2/core.dart';
-import 'package:master_layout/master_layout_component.dart';
 import 'alert_service.dart';
 
 @Component(
     selector: 'alert',
     templateUrl: 'alert_component.html',
-    styleUrls: const <String>['alert_component.css'],
-    directives: const[MasterLayoutComponent])
+    styleUrls: const <String>['alert_component.css'])
 class AlertComponent implements OnInit {
   final AlertService _alertService;
   String message = '';

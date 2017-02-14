@@ -7,6 +7,8 @@ import 'package:angular2/src/core/reflection/reflection.dart';
 import 'package:angular2/router.dart';
 import 'package:angular2/platform/common.dart';
 
+import 'package:master_layout/master_layout_component.dart';
+
 import 'package:alert/alert_component.dart';
 import 'package:alert/alert_service.dart';
 
@@ -23,7 +25,7 @@ main() async {
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(AlertService),
-  ]);
+    const Provider(MasterLayoutComponent)]);
 
   var alertService = ref.injector.get(AlertService);
 
