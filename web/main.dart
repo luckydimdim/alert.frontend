@@ -16,12 +16,18 @@ bool get isDebug =>
     (const String.fromEnvironment('PRODUCTION', defaultValue: 'false')) !=
     'true';
 
+@Component(selector: 'app')
+@View(
+  template: '<master-layout><alert></alert></master-layout>',
+  directives: const [MasterLayoutComponent, AlertComponent])
+class AppComponent {}
+
 main() async {
   if (isDebug) {
     reflector.trackUsage();
   }
 
-  ComponentRef ref = await bootstrap(AlertComponent, [
+  ComponentRef ref = await bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     const Provider(LocationStrategy, useClass: HashLocationStrategy),
     const Provider(AlertService),
