@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:angular2/core.dart';
 import 'alert_service.dart';
 
@@ -5,7 +7,8 @@ import 'alert_service.dart';
     selector: 'alert',
     templateUrl: 'alert_component.html',
     styleUrls: const <String>['alert_component.css'])
-class AlertComponent implements OnInit {
+class AlertComponent implements OnInit, OnDestroy {
+  StreamSubscription _alerServiceSubscription;
   final AlertService _alertService;
   String message = '';
   String type = 'danger';
@@ -14,7 +17,7 @@ class AlertComponent implements OnInit {
 
   @override
   void ngOnInit() {
-    _alertService.GetStream().listen(_setMessage);
+    _alerServiceSubscription = _alertService.GetStream().listen(_setMessage);
   }
 
   void _setMessage(AlertModel alertModel) {
@@ -35,5 +38,13 @@ class AlertComponent implements OnInit {
     };
 
     return classes;
+  }
+
+  @override
+  ngOnDestroy() {
+    if (_alerServiceSubscription != null) {
+      _alerServiceSubscription.cancel();
+      _alerServiceSubscription = null;
+    }
   }
 }

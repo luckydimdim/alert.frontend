@@ -13,7 +13,7 @@ class AlertModel {
 @Injectable()
 class AlertService {
   final Router _router;
-  StreamController<AlertModel> _controller = new StreamController<AlertModel>();
+  var _controller = new StreamController<AlertModel>.broadcast();
 
   AlertService(this._router) {
     _router.subscribe(onNext);
